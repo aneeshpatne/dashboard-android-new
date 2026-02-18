@@ -45,6 +45,6 @@ class NewsViewModel : ViewModel(){
             ),
         ),
     );
-    val count : StateFlow<NewsItem> = _news.asStateFlow();
+    val news : StateFlow<NewsItem> = _news.asStateFlow();
 
 }
