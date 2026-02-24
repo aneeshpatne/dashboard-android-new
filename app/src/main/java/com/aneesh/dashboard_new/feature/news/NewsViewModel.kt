@@ -12,13 +12,14 @@ data class Sources(
     val ogImage: String,
 )
 data class NewsItem(
-    val id : String,
-    val title : String,
+    val id: String,
+    val title: String,
     val description: String,
-    val sources : List<Sources>,
+    val sources: List<Sources>,
     val ogUrl: String,
 )
-class NewsViewModel : ViewModel(){
+
+class NewsViewModel : ViewModel() {
     private val _newsItems = MutableStateFlow(
         listOf(
             NewsItem(
@@ -35,7 +36,8 @@ class NewsViewModel : ViewModel(){
                 ogUrl = "https://www.livelaw.in/h-upload/2026/01/15/646967-mamata-banerjee-sc-ed.jpg",
             ),
         )
-    );
-    val newsItems : StateFlow<List<NewsItem>> = _newsItems.asStateFlow();
+    )
+
+    val newsItems: StateFlow<List<NewsItem>> = _newsItems.asStateFlow()
 
 }
