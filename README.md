@@ -1,6 +1,6 @@
-# Dashboard New
+# Dashboard
 
-Dashboard New is a modern Android intelligence dashboard built with **Kotlin + Jetpack Compose**.  
+Dashboard is a modern Android intelligence dashboard built with **Kotlin + Jetpack Compose**.  
 It brings real-time insights from:
 
 - **Khoj API** (knowledge/retrieval context)
