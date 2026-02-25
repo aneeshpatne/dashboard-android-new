@@ -117,19 +117,3 @@ Run checks:
 .\gradlew.bat test
 .\gradlew.bat connectedAndroidTest
 ```
-
-## Security Notes
-
-- Never hardcode API keys in Kotlin source files
-- Restrict Firebase and API key usage by app/package signature where possible
-- Rotate credentials periodically
-
-## Roadmap
-
-- Offline-first sync enhancements
-- Push notifications for threshold-based alerts
-- Expanded insight widgets and personalization controls
-
-## License
-
-Add your preferred license here (for example, MIT).
