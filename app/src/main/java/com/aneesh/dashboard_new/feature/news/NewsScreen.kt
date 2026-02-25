@@ -2,6 +2,8 @@ package com.aneesh.dashboard_new.feature.news
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -12,16 +14,29 @@ fun NewsRoute(
     viewModel: NewsViewModel = viewModel()
 ){
     val newsState by viewModel.newsItems.collectAsStateWithLifecycle()
-    NewsScreen(newsItems = newsState)
+    Scaffold { innerPadding ->
+        NewsScreen(
+            newsItems = newsState,
+            contentPadding = innerPadding
+        )
+    }
 }
 
 @Composable
 fun NewsScreen(
-    newsItems: NewsItems
+    newsItems: NewsItems,
+    contentPadding: PaddingValues
 ){
-    LazyColumn(){
+    LazyColumn(
+        contentPadding = contentPadding
+    ){
        items(newsItems.items) {
-           Text(text = it.title)
+           NewsItemCard(it)
        }
     }
+}
+
+@Composable
+fun NewsItemCard(newsItem: NewsItem){
+    Text(text = newsItem.title)
 }
