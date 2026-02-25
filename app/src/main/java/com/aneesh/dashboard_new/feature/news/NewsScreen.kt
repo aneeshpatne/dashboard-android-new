@@ -1,5 +1,6 @@
 package com.aneesh.dashboard_new.feature.news
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.PaddingValues
@@ -38,5 +39,8 @@ fun NewsScreen(
 
 @Composable
 fun NewsItemCard(newsItem: NewsItem){
-    Text(text = newsItem.title)
+    Column {
+        Text(text = newsItem.title)
+        Text(text = newsItem.description)
+    }
 }
