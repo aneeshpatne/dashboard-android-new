@@ -1,16 +1,19 @@
 package com.aneesh.dashboard_new.feature.news
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -63,6 +66,7 @@ fun NewsItemCard(newsItem: NewsItem){
             modifier = Modifier.fillMaxWidth().height(180.dp),
             contentScale = ContentScale.Crop
         )
+        Spacer(modifier = Modifier.height(16.dp))
         LazyRow {
             items(newsItem.sources){
                 SourceItem(it)
@@ -86,10 +90,11 @@ fun NewsItemCard(newsItem: NewsItem){
 
 @Composable
 fun SourceItem(sources: Sources){
+
     Row (
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(6.dp),
-        modifier = Modifier.padding(2.dp)
+        modifier = Modifier.padding(5.dp).border(1.dp, MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(12.dp)).padding(5.dp)
     ){
         AsyncImage(
             model = "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${sources.url}&size=32",
