@@ -116,6 +116,9 @@ fun SourceItem(sources: Sources){
         colors = CardDefaults.cardColors(
              containerColor = Color(0xFFFAF6F0)
         ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 2.dp
+        ),
         shape = RoundedCornerShape(0.dp)
     ){
         Row(
