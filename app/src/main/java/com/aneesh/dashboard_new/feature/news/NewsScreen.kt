@@ -112,17 +112,23 @@ fun NewsItemCard(newsItem: NewsItem){
 
 @Composable
 fun SourceItem(sources: Sources){
-
-    Row (
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        modifier = Modifier.padding(5.dp).border(1.dp, MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(12.dp)).padding(5.dp)
+    Card (
+        colors = CardDefaults.cardColors(
+             containerColor = Color(0xFFFAF6F0)
+        ),
+        shape = RoundedCornerShape(0.dp)
     ){
-        AsyncImage(
-            model = "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${sources.url}&size=32",
-            contentDescription = sources.domain,
-            modifier = Modifier.size(16.dp)
-        )
-        Text(text = sources.domain)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            modifier = Modifier.padding(5.dp)
+        ) {
+            AsyncImage(
+                model = "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${sources.url}&size=32",
+                contentDescription = sources.domain,
+                modifier = Modifier.size(16.dp)
+            )
+            Text(text = sources.domain)
+        }
     }
 }
