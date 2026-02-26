@@ -17,6 +17,7 @@ data class NewsItem(
     val description: String,
     val sources: List<Sources>,
     val ogUrl: String,
+    val genre: String,
 )
 
 data class NewsItems(
@@ -28,17 +29,18 @@ class NewsViewModel : ViewModel() {
         NewsItems(
             items = listOf(
                 NewsItem(
-                    id = "60189acd-fcf7-4c18-a23c-cd6a7295a7ad",
-                    title = "SC exchange on ED probe of Mamata",
-                    description = "In Supreme Court hearing over IPAC searches, ASG said ED was terrorised; case posted to March 18.",
+                    id = "41c01af2-081d-45f8-b662-3601552dec47",
+                    title = "BMC to issue QR code certificates for vendors",
+                    description = "BMC will issue QR code certificates to authorised hawkers to curb illegal vending.",
                     sources = listOf(
                         Sources(
-                            url = "https://www.livelaw.in/top-stories/ed-has-been-weaponised-no-ed-was-terrorised-exchange-in-supreme-court-plea-against-mamata-banerjee-523599",
-                            domain = "livelaw",
-                            ogImage = "https://www.livelaw.in/h-upload/2026/01/15/646967-mamata-banerjee-sc-ed.jpg",
+                            url = "https://www.mid-day.com/mumbai/mumbai-news/article/bmc-budget-2026-mumbai-municipal-corporation-introduces-qr-code-based-certification-for-authorised-hawkers-23618320",
+                            domain = "mid-day",
+                            ogImage = "https://images.mid-day.com/images/images/2026/feb/Hawkers-1772034312952_d.png",
                         ),
                     ),
-                    ogUrl = "https://www.livelaw.in/h-upload/2026/01/15/646967-mamata-banerjee-sc-ed.jpg",
+                    ogUrl = "https://images.mid-day.com/images/images/2026/feb/Hawkers-1772034312952_d.png",
+                    genre = "Mumbai",
                 ),
             )
         )
