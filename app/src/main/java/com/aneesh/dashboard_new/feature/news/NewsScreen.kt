@@ -63,6 +63,11 @@ fun NewsItemCard(newsItem: NewsItem){
             modifier = Modifier.fillMaxWidth().height(180.dp),
             contentScale = ContentScale.Crop
         )
+        LazyRow {
+            items(newsItem.sources){
+                SourceItem(it)
+            }
+        }
         Column {
             Text(text = newsItem.title,
                 style = MaterialTheme.typography.titleLarge,
@@ -70,12 +75,11 @@ fun NewsItemCard(newsItem: NewsItem){
                 lineHeight = 28.sp,
                 color = MaterialTheme.colorScheme.onSurface
                 )
-            Text(text = newsItem.description)
-            LazyRow {
-                items(newsItem.sources){
-                    SourceItem(it)
-                }
-            }
+            Text(text = newsItem.description,
+                style = MaterialTheme.typography.bodyLarge,
+                lineHeight = 24.sp,
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
     }
 }
