@@ -20,6 +20,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.aneesh.dashboard_new.feature.CCTV.OpenBrowserButton
 import com.aneesh.dashboard_new.feature.news.NewsRoute
 import com.aneesh.dashboard_new.ui.theme.Dashboard_newTheme
 
@@ -79,7 +80,7 @@ private fun MainScreen() {
             when (MainTab.entries[selectedTab.intValue]) {
                 MainTab.News -> NewsRoute()
                 MainTab.Sensors -> EmptyTabScreen(title = "Sensors")
-                MainTab.Cctv -> EmptyTabScreen(title = "CCTV")
+                MainTab.Cctv -> OpenBrowserButton()
             }
         }
     }
