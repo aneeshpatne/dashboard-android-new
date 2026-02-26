@@ -1,5 +1,6 @@
 package com.aneesh.dashboard_new.feature.news
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,6 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -59,31 +63,49 @@ fun NewsScreen(
 
 @Composable
 fun NewsItemCard(newsItem: NewsItem){
-    Column {
-        AsyncImage(
-            model = newsItem.ogUrl,
-            contentDescription = newsItem.title,
-            modifier = Modifier.fillMaxWidth().height(180.dp),
-            contentScale = ContentScale.Crop
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        LazyRow {
-            items(newsItem.sources){
-                SourceItem(it)
-            }
-        }
-        Column {
-            Text(text = newsItem.title,
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                lineHeight = 28.sp,
-                color = MaterialTheme.colorScheme.onSurface
-                )
-            Text(text = newsItem.description,
-                style = MaterialTheme.typography.bodyLarge,
-                lineHeight = 24.sp,
-                color = MaterialTheme.colorScheme.onSurface
+    Card (
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFFFFFDF9)
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 2.dp
+        ),
+        shape = RoundedCornerShape(0.dp),
+        border = null,
+
+
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            AsyncImage(
+                model = newsItem.ogUrl,
+                contentDescription = newsItem.title,
+                modifier = Modifier.fillMaxWidth().height(180.dp),
+                contentScale = ContentScale.Crop
             )
+            Spacer(modifier = Modifier.height(10.dp))
+            LazyRow {
+                items(newsItem.sources) {
+                    SourceItem(it)
+                }
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+            Column {
+                Text(
+                    text = newsItem.title,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    lineHeight = 28.sp,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = newsItem.description,
+                    style = MaterialTheme.typography.bodyLarge,
+                    lineHeight = 24.sp,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
         }
     }
 }
