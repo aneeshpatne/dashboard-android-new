@@ -1,7 +1,6 @@
 package com.aneesh.dashboard_new.feature.news
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
@@ -63,7 +62,7 @@ fun NewsScreen(
 
 @Composable
 fun NewsItemCard(newsItem: NewsItem){
-    Card (
+    Card(
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFFFFFDF9)
         ),
@@ -71,13 +70,9 @@ fun NewsItemCard(newsItem: NewsItem){
             defaultElevation = 2.dp
         ),
         shape = RoundedCornerShape(0.dp),
-        border = null,
-
-
+        border = null
     ) {
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
+        Column(modifier = Modifier.padding(16.dp)) {
             AsyncImage(
                 model = newsItem.ogUrl,
                 contentDescription = newsItem.title,
@@ -85,53 +80,57 @@ fun NewsItemCard(newsItem: NewsItem){
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.height(10.dp))
-            LazyRow {
-                items(newsItem.sources) {
-                    SourceItem(it)
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                items(newsItem.sources) { source ->
+                    SourceItem(sources = source)
                 }
             }
             Spacer(modifier = Modifier.height(10.dp))
-            Column {
-                Text(
-                    text = newsItem.title,
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    lineHeight = 28.sp,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Text(
-                    text = newsItem.description,
-                    style = MaterialTheme.typography.bodyLarge,
-                    lineHeight = 24.sp,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
+            Text(
+                text = newsItem.title,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                lineHeight = 28.sp,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = newsItem.description,
+                style = MaterialTheme.typography.bodyLarge,
+                lineHeight = 24.sp,
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
     }
 }
 
 @Composable
-fun SourceItem(sources: Sources){
-    Card (
+fun SourceItem(sources: Sources) {
+    Card(
         colors = CardDefaults.cardColors(
-             containerColor = Color(0xFFFAF6F0)
+            containerColor = Color(0xFFFAF6F0)
         ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 2.dp
-        ),
-        shape = RoundedCornerShape(0.dp)
-    ){
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.35f)),
+        shape = RoundedCornerShape(0.dp),
+        elevation = CardDefaults.cardElevation(1.dp)
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(6.dp),
-            modifier = Modifier.padding(5.dp)
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 5.dp)
         ) {
             AsyncImage(
                 model = "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${sources.url}&size=32",
                 contentDescription = sources.domain,
                 modifier = Modifier.size(16.dp)
             )
-            Text(text = sources.domain)
+            Text(
+                text = sources.domain,
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
     }
 }
